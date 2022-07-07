@@ -28,6 +28,7 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
          * enqueue prism.js files
         */
         public static function add_prism() {
+            # custom download: https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+aspnet+bash+basic+c+csharp+cpp+docker+fsharp+git+go+go-module+javadoclike+jq+json+json5+jsonp+makefile+markdown+markup-templating+matlab+mongodb+nginx+perl+php+phpdoc+php-extras+powershell+python+jsx+regex+rest+ruby+rust+sass+scss+shell-session+sql+typescript+vbnet+vim+visual-basic+xml-doc+yaml&plugins=line-highlight+line-numbers+toolbar+copy-to-clipboard+match-braces
             # register prism.css
             wp_register_style( 'prismCSS', plugin_dir_url( __FILE__ ) . 'css/prism.css' );
             # register prism.js
@@ -54,10 +55,12 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                 if( empty( $code ) )
                 {
                     $code = "Unable to retrieve raw code snippet.  Please verify the URL is valid.";
+                    # $container = '<div class="code-toolbar"><pre class="wp-block-prismatic-blocks language-bash"><code class="language-bash">' . $code . '</code></pre></div>';
                     $container = '<div class="code-toolbar"><pre class="wp-block-prismatic-blocks language-bash"><code class="language-bash">' . $code . '</code></pre></div>';
                 }
                 // GitHub returned the code snippet so format it appropriately
                 else {
+                    /*
                     $container = '<div class="code-toolbar"><pre class="wp-block-prismatic-blocks language-' . $atts['lang'] . '"><code class="language-' . $atts['lang'] . '">';
                     $container .= apply_filters('the_content', $code);
                     $container .= '</code></pre><div class="toolbar">';
@@ -66,6 +69,8 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                     $container .= '<div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy">copy to clipboard</button>&nbsp;</div>';
                     $container .= '</div>';
                     $container .= '</div>';
+                    */
+                    $container = '<code class="language-' . $atts['lang'] . '">' . apply_filters('the_content', $code) . '</code>';
                 }
             }
             /**
