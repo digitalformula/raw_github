@@ -70,7 +70,7 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                     $container .= '</div>';
                     $container .= '</div>';
                     */
-                    $container = '<code class="language-' . $atts['lang'] . '">' . apply_filters('the_content', $code) . '</code>';
+                    $container = '<pre><code class="language-' . $atts['lang'] . '">' . apply_filters('the_content', $code) . '</code></pre>';
                 }
             }
             /**
