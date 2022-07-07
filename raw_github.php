@@ -60,7 +60,7 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                 else {
                     $container = '<div class="code-toolbar"><pre class="wp-block-prismatic-blocks language-' . $atts['lang'] . '"><code class="language-' . $atts['lang'] . '">';
                     $container .= apply_filters('the_content', $code);
-                    $container .= '</code></pre><div class="toolbar"><div class="toolbar-item">Hello</div></div></div>';
+                    $container .= '</code></pre><div class="toolbar"><div class="toolbar-item">' . $atts['lang'] . '</div></div></div>';
                 }
             }
             /**
