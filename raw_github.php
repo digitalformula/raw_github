@@ -60,7 +60,11 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                 else {
                     $container = '<div class="code-toolbar"><pre class="wp-block-prismatic-blocks language-' . $atts['lang'] . '"><code class="language-' . $atts['lang'] . '">';
                     $container .= apply_filters('the_content', $code);
-                    $container .= '</code></pre><div class="toolbar"><div class="toolbar-item">' . $atts['lang'] . '</div></div></div>';
+                    $container .= '</code></pre><div class="toolbar">';
+                    $container .= '<div class="toolbar-item">' . $atts['lang'] . '</div>';
+                    $container .= '<div class="toolbar-item"><a href="' . $atts['url'] . '" target="_blank">View on GitHub</a></div>';
+                    $container .= '</div>';
+                    $container .= '</div>';
                 }
             }
             /**
