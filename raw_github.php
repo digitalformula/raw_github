@@ -63,7 +63,7 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                     $container .= '</code></pre><div class="toolbar">';
                     $container .= '<div class="toolbar-item"><button type="button">' . $atts['lang'] . '</button>&nbsp;</div>';
                     $container .= '<div class="toolbar-item"><a href="' . $atts['url'] . '" target="_blank">View on GitHub</a></div>';
-                    $container .= '<div class="toolbar-item"><button type="button" data-copy-state="copy">copy to clipboard</button>&nbsp;</div>';
+                    $container .= '<div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy">copy to clipboard</button>&nbsp;</div>';
                     $container .= '</div>';
                     $container .= '</div>';
                 }
