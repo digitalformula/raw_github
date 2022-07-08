@@ -56,16 +56,24 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
              * if this fails, return a message informing the admin something broke
             */
             try {
-                $code = file_get_contents($atts['url']);
-                // no code snippet was returned
-                if( empty( $code ) )
-                {
-                    $code = "Unable to retrieve raw code snippet.  Please verify the URL is valid.";
-                    $container = '<pre><code class="language-none">' . $code . '</code></pre>';
+
+                // first make sure the user has specified a GitHub url
+                if(strpos($attrs['url'], 'raw.githubusercontent.com')) {
+
+                    $code = file_get_contents($atts['url']);
+                    // no code snippet was returned
+                    if( empty( $code ) )
+                    {
+                        $code = "Unable to retrieve raw code snippet.  Please verify the URL is valid.";
+                        $container = '<pre><code class="language-none">' . $code . '</code></pre>';
+                    }
+                    // GitHub returned the code snippet so format it appropriately
+                    else {
+                        $container = '<pre><code class="language-' . $atts['lang'] . '">' . apply_filters('the_content', $code) . '</code></pre>';
+                    }
                 }
-                // GitHub returned the code snippet so format it appropriately
                 else {
-                    $container = '<pre><code class="language-' . $atts['lang'] . '">' . apply_filters('the_content', $code) . '</code></pre>';
+                    $container = '<pre><code class="language-none">This plugin is intended for GitHub raw files only.  Please make sure you have specified a GitHub raw file.</code></pre>';
                 }
             }
             /**
