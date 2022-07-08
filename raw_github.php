@@ -77,7 +77,8 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                     }
                     // GitHub returned the code snippet so format it appropriately
                     else {
-                        $container = '<pre><code class="language-' . $atts['lang'] . '">' . apply_filters('the_content', $code) . '</code></pre>';
+                        # $container = '<pre><code class="language-' . $atts['lang'] . '">' . apply_filters('the_content', $code) . '</code></pre>';
+                        $container = RawGitHub_Options::generate_container($atts['lang'], apply_filters('the_content', $code));
                     }
                 }
                 else {
