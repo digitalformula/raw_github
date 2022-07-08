@@ -72,8 +72,8 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                     if( empty( $code ) )
                     {
                         $code = "Unable to retrieve raw code snippet.  Please verify the URL is valid.";
-                        $container = '<pre><code class="language-none">' . $code . '</code></pre>';
-                        # $container = RawGithub::generate_container('none', $code);
+                        # $container = '<pre><code class="language-none">' . $code . '</code></pre>';
+                        $container = RawGitHub_Options::generate_container('none', $code);
                     }
                     // GitHub returned the code snippet so format it appropriately
                     else {
