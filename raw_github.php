@@ -61,21 +61,10 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                 if( empty( $code ) )
                 {
                     $code = "Unable to retrieve raw code snippet.  Please verify the URL is valid.";
-                    # $container = '<div class="code-toolbar"><pre class="wp-block-prismatic-blocks language-bash"><code class="language-bash">' . $code . '</code></pre></div>';
-                    $container = '<div class="code-toolbar"><pre class="wp-block-prismatic-blocks language-bash"><code class="language-bash">' . $code . '</code></pre></div>';
+                    $container = '<pre><code class="language-none">' . $code . '</code></pre>';
                 }
                 // GitHub returned the code snippet so format it appropriately
                 else {
-                    /*
-                    $container = '<div class="code-toolbar"><pre class="wp-block-prismatic-blocks language-' . $atts['lang'] . '"><code class="language-' . $atts['lang'] . '">';
-                    $container .= apply_filters('the_content', $code);
-                    $container .= '</code></pre><div class="toolbar">';
-                    $container .= '<div class="toolbar-item"><button type="button">' . $atts['lang'] . '</button>&nbsp;</div>';
-                    $container .= '<div class="toolbar-item"><a href="' . $atts['url'] . '" target="_blank">View on GitHub</a></div>';
-                    $container .= '<div class="toolbar-item"><button class="copy-to-clipboard-button" type="button" data-copy-state="copy">copy to clipboard</button>&nbsp;</div>';
-                    $container .= '</div>';
-                    $container .= '</div>';
-                    */
                     $container = '<pre><code class="language-' . $atts['lang'] . '">' . apply_filters('the_content', $code) . '</code></pre>';
                 }
             }
@@ -84,7 +73,7 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
              * we don't know what exceptions will be thrown, though, so need to react in case something happens
             */
             catch( Exception $e) {
-                $code = '<div class="code-toolbar"><pre class="wp-block-prismatic-blocks language-bash"><code class="language-bash">An error occurred during code snippet retrieval.  Please verify the URL is valid.</code></pre></div>';
+                $code = '<pre><code class="language-none">An error occurred during code snippet retrieval.  Please verify the URL is valid.</code></pre>';
             }
 
             // arrange the attributes that will be used in the response
