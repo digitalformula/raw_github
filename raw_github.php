@@ -88,7 +88,8 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
              * we don't know what exceptions will be thrown, though, so need to react in case something happens
             */
             catch( Exception $e) {
-                $code = '<pre><code class="language-none">An error occurred during code snippet retrieval.  Please verify the URL is valid.</code></pre>';
+                # $code = '<pre><code class="language-none">An error occurred during code snippet retrieval.  Please verify the URL is valid.</code></pre>';
+                $code = RawGitHub_Options::generate_container('none', 'An error occurred during code snippet retrieval.  Please verify the URL is valid.');
             }
 
             // arrange the attributes that will be used in the response
