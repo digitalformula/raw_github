@@ -72,17 +72,15 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                     if( empty( $code ) )
                     {
                         $code = "Unable to retrieve raw code snippet.  Please verify the URL is valid.";
-                        # $container = '<pre><code class="language-none">' . $code . '</code></pre>';
                         $container = RawGitHub_Options::generate_container('none', $code);
                     }
                     // GitHub returned the code snippet so format it appropriately
                     else {
-                        # $container = '<pre><code class="language-' . $atts['lang'] . '">' . apply_filters('the_content', $code) . '</code></pre>';
                         $container = RawGitHub_Options::generate_container($atts['lang'], apply_filters('the_content', $code));
                     }
                 }
                 else {
-                    $container = '<pre><code class="language-none">This plugin is intended for GitHub raw files only.  Please make sure you have provided the URL for a GitHub-hosted raw file.</code></pre>';
+                    $container = RawGitHub_Options::generate_container('none', 'This plugin is intended for GitHub raw files only.  Please make sure you have provided the URL for a GitHub-hosted raw file.');
                 }
             }
             /**
