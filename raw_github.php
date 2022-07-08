@@ -9,6 +9,13 @@
  * Author URI: https://www.digitalformula.net
  */
 
+/**
+ * custom prism.js download url
+ *
+ * https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+aspnet+bash+basic+c+csharp+cpp+docker+fsharp+git+go    +go-module+javadoclike+jq+json+json5+jsonp+makefile+markdown+markup-templating+matlab+mongodb+nginx+perl+php+phpdoc+php-extras+powershel    l+python+jsx+regex+rest+ruby+rust+sass+scss+shell-session+sql+typescript+vbnet+vim+visual-basic+xml-doc+yaml&plugins=line-highlight+line    -numbers+show-language+toolbar+copy-to-clipboard+download-button+match-braces
+ *
+*/
+
 if( !defined( 'RAWGITHUB_VER' ) )
     define( 'RAWGITHUB_VER', '1.0.0' );
 
@@ -28,7 +35,6 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
          * enqueue prism.js files
         */
         public static function add_prism() {
-            # custom download: https://prismjs.com/download.html#themes=prism&languages=markup+css+clike+javascript+aspnet+bash+basic+c+csharp+cpp+docker+fsharp+git+go+go-module+javadoclike+jq+json+json5+jsonp+makefile+markdown+markup-templating+matlab+mongodb+nginx+perl+php+phpdoc+php-extras+powershell+python+jsx+regex+rest+ruby+rust+sass+scss+shell-session+sql+typescript+vbnet+vim+visual-basic+xml-doc+yaml&plugins=line-highlight+line-numbers+toolbar+copy-to-clipboard+match-braces
             # register prism.css
             wp_register_style( 'prismCSS', plugin_dir_url( __FILE__ ) . 'css/prism.css' );
             # register prism.js
