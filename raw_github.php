@@ -58,7 +58,7 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
             try {
 
                 // first make sure the user has specified a GitHub url
-                if(strpos($attrs['url'], 'raw.githubusercontent.com')) {
+                if(strpos($atts['url'], 'raw.githubusercontent.com')) {
 
                     $code = file_get_contents($atts['url']);
                     // no code snippet was returned
