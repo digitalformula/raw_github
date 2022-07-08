@@ -44,6 +44,13 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
             wp_enqueue_script( 'prismJS' );
         }
 
+        public static function generate_container($lang = 'none', $content = 'No content specified')
+        {
+            $container_header = '<pre><code class="language-';
+            $container_footer = '</code></pre>';
+            return($container_header . $lang . '">' . $content . $container_footer);
+        }
+
         /**
          * function that runs when the shortcode is used
         */
@@ -65,7 +72,8 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                     if( empty( $code ) )
                     {
                         $code = "Unable to retrieve raw code snippet.  Please verify the URL is valid.";
-                        $container = '<pre><code class="language-none">' . $code . '</code></pre>';
+                        # $container = $container_header . 'none">' . $code . '</code></pre>';
+                        $container = RawGithub::generate_container('none', $code);
                     }
                     // GitHub returned the code snippet so format it appropriately
                     else {
@@ -73,7 +81,7 @@ if ( !class_exists( 'RawGithub_Options' ) ) {
                     }
                 }
                 else {
-                    $container = '<pre><code class="language-none">This plugin is intended for GitHub raw files only.  Please make sure you have specified a GitHub raw file.</code></pre>';
+                    $container = '<pre><code class="language-none">This plugin is intended for GitHub raw files only.  Please make sure you have provided the URL for a GitHub-hosted raw file.</code></pre>';
                 }
             }
             /**
